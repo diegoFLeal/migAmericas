@@ -2,62 +2,55 @@
 ### code written by Diego F. Leal (www.diegoleal.info)
 ### Last update: 05/21/2021
 
-## session info for replicability
-# R version 3.6.1 (2019-07-05)
+# R version 3.5.1 (2018-07-02)
 # Platform: x86_64-w64-mingw32/x64 (64-bit)
-# Running under: Windows Server x64 (build 14393)
+# Running under: Windows >= 8 x64 (build 9200)
 # 
 # Matrix products: default
 # 
 # locale:
-# [1] LC_COLLATE=English_United States.1252 
-# [2] LC_CTYPE=English_United States.1252   
-# [3] LC_MONETARY=English_United States.1252
-# [4] LC_NUMERIC=C                          
+# [1] LC_COLLATE=English_United States.1252  LC_CTYPE=English_United States.1252   
+# [3] LC_MONETARY=English_United States.1252 LC_NUMERIC=C                          
 # [5] LC_TIME=English_United States.1252    
 # 
 # attached base packages:
 # [1] stats     graphics  grDevices utils     datasets  methods   base     
 # 
 # other attached packages:
-# [1] snow_0.4-3            migest_1.7.3          Rcpp_1.0.4.6         
-# [4] dplyr_0.8.5           xergm_1.3             latticeExtra_0.6-26  
-# [7] lattice_0.20-38       RColorBrewer_1.1-2    texreg_1.36.23       
-# [10] statnet_2015.11.0     ergm.count_3.4.0      tergm_3.6.1          
-# [13] sna_2.4               statnet.common_4.3.0  networkDynamic_0.10.1
-# [16] ergm_3.10.4           network_1.16.0        reshape2_1.4.3       
-# [19] devtools_2.3.0        usethis_1.6.1        
+# [1] snow_0.4-3            Rcpp_1.0.2            dplyr_0.8.3           migest_1.7.4         
+# [5] xergm_1.3             latticeExtra_0.6-28   RColorBrewer_1.1-2    lattice_0.20-35      
+# [9] statnet_2015.11.0     ergm.count_3.4.0      tergm_3.6.1           sna_2.4              
+# [13] statnet.common_4.3.0  networkDynamic_0.10.0 ergm_3.10.4           network_1.15         
+# [17] reshape2_1.4.3       
 # 
 # loaded via a namespace (and not attached):
-# [1] prettyunits_1.1.1 ps_1.3.0          assertthat_0.2.1  rprojroot_1.3-2  
-# [5] digest_0.6.25     R6_2.4.0          plyr_1.8.4        backports_1.1.4  
-# [9] stats4_3.6.1      coda_0.19-3       pillar_1.4.1      rlang_0.4.6      
-# [13] rstudioapi_0.11   minqa_1.2.4       vegan_2.5-5       callr_3.4.3      
-# [17] nloptr_1.2.2.1    Matrix_1.2-17     desc_1.2.0        splines_3.6.1    
-# [21] lme4_1.1-23       statmod_1.4.34    stringr_1.4.0     igraph_1.2.4.1   
-# [25] compiler_3.6.1    pkgconfig_2.0.2   pkgbuild_1.0.8    mgcv_1.8-28      
-# [29] tidyselect_0.2.5  tibble_2.1.1      lpSolve_5.6.13.2  permute_0.9-5    
-# [33] fansi_0.4.0       crayon_1.3.4      withr_2.1.2       MASS_7.3-51.4    
-# [37] grid_3.6.1        nlme_3.1-140      magrittr_1.5      cli_2.0.2        
-# [41] stringi_1.4.3     ROCR_1.0-11       fs_1.4.1          remotes_2.1.1    
-# [45] testthat_2.3.2    robustbase_0.93-5 ellipsis_0.3.1    boot_1.3-22      
-# [49] trust_0.1-7       tools_3.6.1       glue_1.4.1        DEoptimR_1.0-8   
-# [53] purrr_0.3.4       processx_3.4.2    pkgload_1.0.2     parallel_3.6.1   
-# [57] cluster_2.1.0     sessioninfo_1.1.1 memoise_1.1.0    
+# [1] gtools_3.8.1       tidyselect_1.1.0   lpSolve_5.6.15     purrr_0.3.4       
+# [5] splines_3.5.1      tcltk_3.5.1        vctrs_0.3.1        stats4_3.5.1      
+# [9] yaml_2.2.0         mgcv_1.8-24        rlang_0.4.6        pillar_1.4.4      
+# [13] nloptr_1.2.1       glue_1.3.0         trust_0.1-7        lifecycle_0.2.0   
+# [17] plyr_1.8.4         robustbase_0.93-5  stringr_1.4.0      caTools_1.17.1.1  
+# [21] coda_0.19-2        permute_0.9-4      parallel_3.5.1     DEoptimR_1.0-8    
+# [25] KernSmooth_2.23-15 ROCR_1.0-7         gdata_2.18.0       vegan_2.5-3       
+# [29] texreg_1.36.23     lme4_1.1-19        gplots_3.0.1.1     stringi_1.1.7     
+# [33] grid_3.5.1         bitops_1.0-6       tools_3.5.1        magrittr_1.5      
+# [37] RSiena_1.2-12      tibble_3.0.1       cluster_2.0.7-1    crayon_1.3.4      
+# [41] pkgconfig_2.0.2    MASS_7.3-53        ellipsis_0.2.0.1   Matrix_1.2-17     
+# [45] assertthat_0.2.1   minqa_1.2.4        rstudioapi_0.11    boot_1.3-20       
+# [49] R6_2.3.0           igraph_1.2.4.1     nlme_3.1-141       compiler_3.5.1
 
 ## clear all
 rm(list=ls())
 
 library(reshape2)         # version 1.4.3
-library(network)          # version 1.16.0
+library(network)          # version 1.15
 library(ergm)             # version 3.10.4
 library(statnet)          # version 2015.11.0
 library(sna)              # version 2.4
-library(latticeExtra)     # version 0.6-26
+library(latticeExtra)     # version 0.6-28
 library(xergm)            # version 1.3
-library(migest)           # version 1.7.3
-library(dplyr)            # version 0.8.5
-library(Rcpp)             # version 1.0.4.6
+library(migest)           # version 1.7.4
+library(dplyr)            # version 0.8.3
+library(Rcpp)             # version 1.0.2
 library(tergm)            # version 3.6.1
 library(snow)             # version 0.4-3
 
@@ -84,7 +77,7 @@ HDI<-read.csv("HHDI_with_iso.csv",header=T,sep = ",",as.is=T)
 ## set key paramters
 
 #threshold to binarize ties. Any number > 32 would include all countries in the Americas since there are 32 in the analytic sample
-top_destinations <-10000
+top_destinations <-15
 
 #total number of countries in the original/preprocessed data set
 preprocessed_N   <-231
