@@ -873,8 +873,8 @@ for (b in 1:length(AllNets))
 ## this reproduces Table 5 in the paper
 colnames(triads.data.frame)<-c("Country","Position","Count","Triad_Type","Decade")
 
-#all the info regarding countries position's in 030T and 030C triads is exported into one data frame
-#write.csv(triads.data.frame,file=paste("positions_in_triads","_top_",top_destinations,"_destinations",".csv",sep=""),row.names = F)
+#all the info regarding countries position's in 030T and 030C triads is exported into one data frame (this reproduces Table 5 in the paper if top_destinations = 10)
+write.csv(triads.data.frame,file=paste("positions_in_triads","_top_",top_destinations,"_destinations",".csv",sep=""),row.names = F)
 
 ##### 8. Test of Hypothesis 3 (based on Table 5) #####
 
